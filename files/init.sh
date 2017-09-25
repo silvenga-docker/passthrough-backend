@@ -5,7 +5,7 @@
 echo "Using backend ${BACKEND_URL}."
 envsubst > /etc/nginx/conf.d/default.conf <<EOF
 server {
-    listen       80;
+    listen       $PORT;
     server_name  localhost;
     
     location / {
