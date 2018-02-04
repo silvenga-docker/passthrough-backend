@@ -4,13 +4,20 @@
 
 echo "Using backend ${BACKEND_URL}."
 cat > /etc/nginx/conf.d/default.conf <<EOF
+
+map \$http_upgrade \$connection_upgrade {
+    default          upgrade;
+    ''               close;
+}
+
 server {
     listen       ${PORT};
     server_name  localhost;
-    
+
     location / {
-       proxy_pass ${BACKEND_URL};
-       proxy_set_header Host \$host;
+        proxy_pass ${BACKEND_URL};
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection \$connection_upgrade;
     }
 }
 EOF
