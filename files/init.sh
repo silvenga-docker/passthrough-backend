@@ -14,10 +14,10 @@ map \$http_upgrade \$connection_upgrade {
 server {
     listen       ${PORT};
     server_name  localhost;
-    resolver     ${RESOLVER};
 
     location / {
         proxy_pass ${BACKEND_URL};
+        proxy_set_header Host \$host;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection \$connection_upgrade;
     }
