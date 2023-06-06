@@ -16,6 +16,8 @@ server {
     listen       ${PORT};
     server_name  localhost;
 
+    proxy_buffering off; 
+
     location / {
         proxy_pass ${BACKEND_URL};
         proxy_set_header Host ${BACKEND_HOST};
