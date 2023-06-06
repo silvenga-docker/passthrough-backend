@@ -1,8 +1,8 @@
-FROM nginx:1.13.5-alpine
+FROM nginx:stable
 
-ENV BACKEND_URL ""
-ENV BACKEND_HOST "$host"
-ENV PORT "80"
+ENV BACKEND_URL="" \
+    BACKEND_HOST="$host" \
+    PORT="80"
 
 COPY files/init.sh /init.sh
 

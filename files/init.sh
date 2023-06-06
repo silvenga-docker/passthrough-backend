@@ -16,7 +16,7 @@ server {
     listen       ${PORT};
     server_name  localhost;
 
-    proxy_buffering off; 
+    proxy_buffering off;
 
     location / {
         proxy_pass ${BACKEND_URL};
